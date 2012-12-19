@@ -2,13 +2,13 @@
 as of now: a demo of how to do infinite comments in rails with mongoid
 the most important code:
 ```ruby
-  class Comment
-    include Mongoid::Document
-    field :body, type: String
+    class Comment
+      include Mongoid::Document
+      field :body, type: String
 
-    has_many :children, class_name: "Comment", inverse_of: :parent
-    belongs_to :parent, class_name: "Comment", inverse_of: :children
-  end
+      has_many :children, class_name: "Comment", inverse_of: :parent
+      belongs_to :parent, class_name: "Comment", inverse_of: :children
+    end
 ```
 
 Comment was made with:
