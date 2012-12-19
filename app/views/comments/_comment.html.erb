@@ -1,0 +1,12 @@
+<div>
+	<p>
+	  <b>Body:</b>
+	  <%= comment.body %>
+	</p>
+	<%= link_to 'Reply', new_comment_path(:parent_id => comment.id) %>
+	<blockquote>
+		<% comment.children.each do |c| %>
+			<%= render c %>
+		<% end %>
+	</blockquote>
+</div>
