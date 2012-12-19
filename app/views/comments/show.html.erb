@@ -4,11 +4,10 @@
   <b>Body:</b>
   <%= @comment.body %>
 </p>
-<hr>
-<% @comment.children.each do |c| %>
-	<%= render c %>
-<% end %>
-
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %> |
 <%= link_to 'Reply', new_comment_path(:parent_id => @comment.id) %>
+<hr>
+<blockquote>
+	<%= render @comment.children %>
+</blockquote>

@@ -27,7 +27,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     if params[:parent_id]
       parent = Comment.find(params[:parent_id])
-      puts parent.id
       @comment.parent = parent
     end
 
