@@ -11,6 +11,10 @@ class Comment
   	end
   end
 
+  def is_op?
+  	self == self.op
+  end
+
   has_many :children, class_name: "Comment", inverse_of: :parent
   belongs_to :parent, class_name: "Comment", inverse_of: :children
 end

@@ -13,8 +13,13 @@
 			</div>		
 		</div>
 		<div>
-			<p class='<%= "lead" if comment == @comment %>'>
-			  <%= comment.body %>
+			<% if comment.is_op? %>
+				<p class='lead'>
+					<%= comment.title %>
+				</p>
+		  <% end %>
+			<p>
+				<%= comment.body %>
 			</p>
 			<small>
 				<strong>
