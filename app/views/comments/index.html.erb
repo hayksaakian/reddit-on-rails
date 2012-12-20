@@ -1,12 +1,16 @@
-<table>
+<ol>
 <% @comments.each do |comment| %>
-  <tr>
-    <td><%= link_to comment.title, comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <li>
+    <div class='lead'>
+			<%= link_to comment.title, comment %> 
+    </div> 
+    <small>
+	    <%= link_to 'Edit', edit_comment_path(comment) %> |
+	    <%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %>
+	  </small>
+  </li>
 <% end %>
-</table>
+</ol>
 
 <br />
 
