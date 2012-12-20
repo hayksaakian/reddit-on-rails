@@ -11,11 +11,17 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :parent_id %>
+  <% if @comment.parent == nil %>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
   </div>
-  <%= f.hidden_field :parent_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

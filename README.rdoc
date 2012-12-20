@@ -14,7 +14,7 @@ Comment was made with:
     rails g scaffold Comment body:string
 
 == Other changes:
-in comments_controller, detect a parent_id for comments#new
+for comments#new in comments_controller, detect a parent_id 
 
     if params[:parent_id]
       parent = Comment.find(params[:parent_id])
@@ -24,37 +24,6 @@ in comments_controller, detect a parent_id for comments#new
 for new.html.erb (really in _form.html.erb), add a hidden_field to store the parent_id
 
     <%= f.hidden_field :parent_id %>
-
-create a _comment.html.erb partial
-
-    <div>
-      <p>
-        <b>Body:</b>
-        <%= comment.body %>
-      </p>
-      <%= link_to 'Reply', new_comment_path(:parent_id => comment.id) %>
-      <% if comment.children.any? %>
-        <blockquote>
-          <%= render comment.children %>
-        </blockquote>
-      <% end %>
-    </div>
-
-and a similar show.html.erb
-
-    <p id="notice"><%= notice %></p>
-
-    <p>
-      <b>Body:</b>
-      <%= @comment.body %>
-    </p>
-    <%= link_to 'Edit', edit_comment_path(@comment) %> |
-    <%= link_to 'Back', comments_path %> |
-    <%= link_to 'Reply', new_comment_path(:parent_id => @comment.id) 
-    <hr>
-    <blockquote>
-      <%= render @comment.children %>
-    </blockquote>
 
 change comments#index slightly
 

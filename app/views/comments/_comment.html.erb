@@ -1,9 +1,36 @@
 <div>
-	<p>
-	  <b>Body:</b>
-	  <%= comment.body %>
-	</p>
-	<%= link_to 'Reply', new_comment_path(:parent_id => comment.id) %>
+	<div>
+		<div class='myspan'>
+			<div>
+				<%= link_to 'http://www.google.com' do %>
+					<i class="icon-chevron-up"></i>
+				<% end %>
+			</div>	
+			<div>
+				<%= link_to 'http://www.google.com' do %>
+					<i class="icon-chevron-down"></i>
+				<% end %>
+			</div>		
+		</div>
+		<div>
+			<p class='<%= "lead" if comment == @comment %>'>
+			  <%= comment.body %>
+			</p>
+			<small>
+				<strong>
+				<%= link_to 'op', comment.op unless comment.op == @comment %>
+				<%= link_to 'permalink', comment unless comment == @comment %>
+				<%= link_to 'parent', comment.parent unless comment.parent == nil %>
+				<%= link_to 'edit', edit_comment_path(comment) %>
+				<%= link_to 'delete', comment, confirm: 'Are you sure?', method: :delete %>
+				<%= link_to 'reply', new_comment_path(:parent_id => comment.id) %>
+				</strong>
+			</small>
+		</div>
+	</div>
+	<% if comment.parent == nil %>
+		<hr>
+	<% end %>
 	<% if comment.children.any? %>
 		<blockquote>
 			<%= render comment.children %>
